@@ -1,18 +1,19 @@
 const INITIAL_STATE = {
-    users: [
-        {
-            name: "afnan",
-            email: "afnan#gmail.com"
-        }
-    ]
+    users: [],
+    current_user:{},
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case "SETDATA":
+        case "SETUSER":
             return({
                 ...state,
-                users:[...state.users,action.data]
+                current_user:action.data,
+            })
+        case "SETFIREBASEUSERS":
+            return({
+                ...state,
+                users:action.data
             })
         default:
             return state;
